@@ -34,8 +34,7 @@ Credit-Portfolio-Segmentation-and-Risk-Pattern-Analysis/
 │   └── 12_Final_Insights_and_Results.ipynb       <- Underwriting policy matrix & executive summary
 │
 ├── dashboard/
-│   ├── 13_Streamlit_Dashboard.ipynb              <- Dashboard architecture walkthrough & quick launch
-│   └── app.py                                    <- Production Streamlit web application
+│   └── app.py                                    <- Interactive Streamlit web application
 │
 ├── outputs/
 │   ├── figures/                                  <- High-resolution plots (PCA, Elbow, Default Rates, DBSCAN)
