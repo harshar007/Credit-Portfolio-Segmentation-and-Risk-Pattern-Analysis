@@ -1,0 +1,58 @@
+services:
+  # Interactive Credit Risk & Segmentation Streamlit Web Dashboard
+  dashboard:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: credit_risk_dashboard
+    ports:
+      - "8501:8501"
+    environment:
+      - STREAMLIT_SERVER_PORT=8501
+      - STREAMLIT_SERVER_ADDRESS=0.0.0.0
+      - STREAMLIT_SERVER_HEADLESS=true
+    volumes:
+      - ./src:/app/src
+      - ./dashboard:/app/dashboard
+      - ./data:/app/data
+      - ./outputs:/app/outputs
+    healthcheck:
+      test: ["CMD-SHELL", "curl --fail http://localhost:8501/_stcore/health || exit 1"]
+      interval: 15s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+    restart: unless-stopped
+    command: ["streamlit", "run", "dashboard/app.py", "--server.port=8501", "--server.address=0.0.0.0"]
+
+  # JupyterLab Environment for Interactive Notebook Exploration (01 through 12)
+  jupyter:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: credit_risk_jupyter
+    ports:
+      - "8888:8888"
+    volumes:
+      - ./notebooks:/app/notebooks
+      - ./src:/app/src
+      - ./dashboard:/app/dashboard
+      - ./data:/app/data
+      - ./outputs:/app/outputs
+      - ./tests:/app/tests
+    healthcheck:
+      test: ["CMD-SHELL", "curl --fail http://localhost:8888/lab || exit 1"]
+      interval: 15s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+    restart: unless-stopped
+    command: [
+      "jupyter", "lab",
+      "--ip=0.0.0.0",
+      "--port=8888",
+      "--no-browser",
+      "--allow-root",
+      "--NotebookApp.token=",
+      "--NotebookApp.password="
+    ]

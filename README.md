@@ -99,3 +99,51 @@ This launches a browser interface featuring:
 - Interactive 2D PCA cluster visualizations with Plotly.
 - Risk profile breakdowns for each borrower segment.
 - An interactive **Underwriter Risk Simulator** to evaluate prospective loan applicants in real time.
+
+---
+
+## 🐳 Docker Deployment
+
+The project includes full containerization for both the **Streamlit Dashboard** and **JupyterLab** notebook environment.
+
+### Run with Docker Compose (Recommended)
+
+1. **Launch the Streamlit Dashboard (Port 8501):**
+   ```bash
+   docker compose up dashboard
+   ```
+   Open your browser at **http://localhost:8501**.
+
+2. **Launch JupyterLab for Notebook Exploration (Port 8888):**
+   ```bash
+   docker compose up jupyter
+   ```
+   Open your browser at **http://localhost:8888**.
+
+3. **Run Both Services Concurrently:**
+   ```bash
+   docker compose up
+   ```
+
+4. **Run Unit Tests Inside Docker:**
+   ```bash
+   docker compose run --rm dashboard pytest tests
+   ```
+
+5. **Stop Containers:**
+   ```bash
+   docker compose down
+   ```
+
+### Run with Standalone Docker
+
+```bash
+# Build Docker image
+docker build -t credit-risk-analytics .
+
+# Run Streamlit Dashboard
+docker run -d -p 8501:8501 --name credit-dashboard credit-risk-analytics
+
+# Run JupyterLab
+docker run -d -p 8888:8888 --name credit-jupyter credit-risk-analytics jupyter lab --ip=0.0.0.0 --port=8888 --no-browser --allow-root --NotebookApp.token=''
+```
