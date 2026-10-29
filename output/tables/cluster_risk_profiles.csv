@@ -1,0 +1,5 @@
+Segment_Name,Borrower_Count,Avg_Income,Avg_FICO,Avg_DTI,Avg_Loan_Amount,Default_Rate_Pct
+Prime / Low Risk,4627,135055.9,700.5,16.6,26675.22,20.88
+Overleveraged / Moderate Risk,3255,72712.84,758.5,14.89,12546.94,9.25
+Entry-Level / Young Profile,8888,55600.99,685.8,18.91,10709.61,22.75
+Subprime / High Risk,8230,65624.05,687.2,19.54,11990.55,20.73

@@ -16,6 +16,8 @@ from src.risk_analysis import (
     generate_business_recommendations,
     SEGMENT_LABEL_MAPPING,
 )
+from src.pipeline import run_pipeline
+import pickle
 
 
 @pytest.fixture
@@ -100,3 +102,35 @@ def test_generate_business_recommendations(sample_data):
         assert "risk_level" in rec
         assert "action" in rec
         assert "strategy" in rec
+
+
+def test_saved_unsupervised_models():
+    """Validates that serialized .pkl models exist, load cleanly, and perform inference."""
+    output_dir = Path("output")
+    assert (output_dir / "kmeans_model.pkl").exists()
+    assert (output_dir / "pca_model.pkl").exists()
+    assert (output_dir / "scaler.pkl").exists()
+    assert (output_dir / "dbscan_model.pkl").exists()
+    assert (output_dir / "unsupervised_pipeline.pkl").exists()
+
+    with open(output_dir / "kmeans_model.pkl", "rb") as f:
+        km = pickle.load(f)
+    assert hasattr(km, "cluster_centers_")
+    assert km.n_clusters == 4
+
+    with open(output_dir / "scaler.pkl", "rb") as f:
+        scaler = pickle.load(f)
+    assert hasattr(scaler, "mean_")
+
+    with open(output_dir / "pca_model.pkl", "rb") as f:
+        pca = pickle.load(f)
+    assert hasattr(pca, "components_")
+    assert pca.n_components == 2
+
+    with open(output_dir / "unsupervised_pipeline.pkl", "rb") as f:
+        bundle = pickle.load(f)
+    assert "kmeans_model" in bundle
+    assert "scaler" in bundle
+    assert "pca_model_2d" in bundle
+    assert "features" in bundle
+

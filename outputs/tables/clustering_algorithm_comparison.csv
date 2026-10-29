@@ -1,4 +1,4 @@
 Algorithm,Optimal Clusters,Silhouette Score,Handles Outliers,Interpretability,Speed
-K-Means,4,0.228,Sensitive,High,Very Fast
+K-Means,4,0.219,Sensitive,High,Very Fast
 Hierarchical,4,0.215,Sensitive,High (Tree),Moderate
 DBSCAN,Density-based,-0.05,Explicit (Anomalies),Moderate,Fast

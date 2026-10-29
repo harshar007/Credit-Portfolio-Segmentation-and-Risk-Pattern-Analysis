@@ -1,0 +1,83 @@
+{
+  "pipeline_version": "1.0.0",
+  "total_records": 25000,
+  "features": [
+    "annual_income",
+    "dti",
+    "loan_amount",
+    "fico_score",
+    "emp_length_years"
+  ],
+  "n_clusters": 4,
+  "kmeans_inertia": 72619.59182680435,
+  "kmeans_silhouette_sample": 0.21946533421746417,
+  "pca_variance_ratio_2d": [
+    0.32038866883189626,
+    0.21429131247921185
+  ],
+  "pca_cumulative_variance_2d_pct": 53.467998131110804,
+  "dbscan_anomaly_count": 30,
+  "dbscan_anomaly_pct": 0.12,
+  "dbscan_anomaly_default_rate_pct": 16.67,
+  "saved_models": [
+    "kmeans_model.pkl",
+    "pca_model.pkl",
+    "scaler.pkl",
+    "dbscan_model.pkl",
+    "unsupervised_pipeline.pkl"
+  ],
+  "cluster_profiles": [
+    {
+      "Cluster": 0,
+      "segment_name": "Prime / Low Risk",
+      "borrower_count": 4627,
+      "portfolio_share_pct": 18.51,
+      "annual_income": 135055.9,
+      "loan_amount": 26675.22,
+      "fico_score": 700.5,
+      "dti": 16.6,
+      "emp_length_years": 6.4,
+      "default_rate_pct": 20.88,
+      "relative_risk_ratio": 1.04
+    },
+    {
+      "Cluster": 1,
+      "segment_name": "Overleveraged / Moderate Risk",
+      "borrower_count": 3255,
+      "portfolio_share_pct": 13.02,
+      "annual_income": 72712.84,
+      "loan_amount": 12546.94,
+      "fico_score": 758.5,
+      "dti": 14.89,
+      "emp_length_years": 5.4,
+      "default_rate_pct": 9.25,
+      "relative_risk_ratio": 0.46
+    },
+    {
+      "Cluster": 2,
+      "segment_name": "Entry-Level / Young Profile",
+      "borrower_count": 8888,
+      "portfolio_share_pct": 35.55,
+      "annual_income": 55600.99,
+      "loan_amount": 10709.61,
+      "fico_score": 685.8,
+      "dti": 18.91,
+      "emp_length_years": 2.1,
+      "default_rate_pct": 22.75,
+      "relative_risk_ratio": 1.14
+    },
+    {
+      "Cluster": 3,
+      "segment_name": "Subprime / High Risk",
+      "borrower_count": 8230,
+      "portfolio_share_pct": 32.92,
+      "annual_income": 65624.05,
+      "loan_amount": 11990.55,
+      "fico_score": 687.2,
+      "dti": 19.54,
+      "emp_length_years": 9.2,
+      "default_rate_pct": 20.73,
+      "relative_risk_ratio": 1.04
+    }
+  ]
+}

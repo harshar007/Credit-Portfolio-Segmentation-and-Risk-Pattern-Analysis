@@ -1,0 +1,5 @@
+Cluster,segment_name,borrower_count,portfolio_share_pct,annual_income,loan_amount,fico_score,dti,emp_length_years,default_rate_pct,relative_risk_ratio
+0,Prime / Low Risk,4627,18.51,135055.9,26675.22,700.5,16.6,6.4,20.88,1.04
+1,Overleveraged / Moderate Risk,3255,13.02,72712.84,12546.94,758.5,14.89,5.4,9.25,0.46
+2,Entry-Level / Young Profile,8888,35.55,55600.99,10709.61,685.8,18.91,2.1,22.75,1.14
+3,Subprime / High Risk,8230,32.92,65624.05,11990.55,687.2,19.54,9.2,20.73,1.04
